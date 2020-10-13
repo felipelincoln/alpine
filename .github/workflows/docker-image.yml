@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on: push
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --tag felipelincoln/alpine:latest
+    - name: Login to Dockerhub
+      run: docker login -u felipelincoln -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+    - name: Push Docker image to Dockerhub
+      run: docker push felipelincoln/alpine:latest
