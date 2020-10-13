@@ -1,5 +1,4 @@
 syntax enable
-filetype plugin indent on
 packloadall
 
 set path+=**
