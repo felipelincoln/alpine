@@ -5,11 +5,12 @@ RUN apk add git vim tree
 WORKDIR /home
 
 RUN git clone https://github.com/elixir-editors/vim-elixir
-RUN cd vim-elixir && sh manual_install.sh
+RUN sh vim-elixir/manual_install.sh && rm -rf vim-elixir/
 
-RUN git clone https://github.com/felipelincoln/alpine
-RUN mv alpine/.vimrc ~/
+COPY .vimrc ~/
 
-RUN rm -rf alpine/ vim-elixir/
+RUN alias log='git log --oneline --graph' \
+    alias s='git status' \
+    alias d='git diff' \
 
 CMD ["/bin/sh"]
