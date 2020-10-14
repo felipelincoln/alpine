@@ -1,32 +1,33 @@
-syntax enable
-packloadall
+set encoding=UTF-8
 
-set path+=**
-set wildmenu
-set noswapfile
-set autoindent
-set number
-set expandtab
-set hlsearch
-set shiftwidth=2
-set tabstop=2
+" plugins
+call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "only for :CocInstall coc-elixir
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'rakr/vim-one' "one
+call plug#end()
+
+" theme
+set termguicolors
+set background=dark
+colorscheme one
+let g:airline_theme='one'
+let g:airline_powerline_fonts = 1 "requires fonts-powerline
+call one#highlight('Normal', 'b7b7b7', '131926', 'none')
+
+" settings
 set colorcolumn=120
+set number
+set hlsearch
+set pastetoggle=<F2>
+set noswapfile
+autocmd vimenter * NERDTree
 
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_liststyle=3
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+'
-
-function OpenTreeIfEmpty()
-    if @% == ""
-        :25vsplit
-        :find .
-    endif
-endfunction
-
-function! InsertTabWrapper()
+" editing
+function! Autocomplete()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
@@ -35,20 +36,12 @@ function! InsertTabWrapper()
     endif
 endfunction
 
-set pastetoggle=<F2>
-nnoremap <Tab> <C-W>w
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-n>
-
+inoremap <expr> <tab> Autocomplete()
+inoremap <s-tab> <c-p>
 nnoremap <space> :%s///g<left><left>
 nnoremap <space><space> :.,$s///g<left><left>
 nnoremap <space><space><space> :.,.s///g<left><left>
-nnoremap gg ggzz
-nnoremap G Gzz
-nnoremap ç :vertical resize 25<cr>
+
+" navigation
+nnoremap <tab> <c-w>w
 nnoremap <backspace> :e#<cr>
-
-imap jj <esc>bgUwea
-
-au VimEnter * call OpenTreeIfEmpty()
-hi StatusLine ctermbg=Black ctermfg=Cyan
