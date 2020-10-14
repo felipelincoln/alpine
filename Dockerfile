@@ -11,6 +11,6 @@ COPY .vimrc ~/
 
 RUN alias log='git log --oneline --graph' \
     alias s='git status' \
-    alias d='git diff' \
+    alias d='git diff'
 
 CMD ["/bin/sh"]
