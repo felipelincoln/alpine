@@ -1,12 +1,13 @@
 set encoding=UTF-8
 
-" plugins
+" plugins (requires node, elixir and mix)
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "only for :CocInstall coc-elixir
+Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons' "requires hack nerdfont
 Plug 'rakr/vim-one' "one
 call plug#end()
 
@@ -19,8 +20,12 @@ let g:airline_powerline_fonts = 1 "requires fonts-powerline
 call one#highlight('Normal', 'b7b7b7', '131926', 'none')
 
 " settings
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set colorcolumn=120
 set number
+set relativenumber
 set hlsearch
 set pastetoggle=<F2>
 set noswapfile
