@@ -1,14 +1,13 @@
 set encoding=UTF-8
 
-" plugins (requires node, elixir and mix)
+" plugins (requires elixir)
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "only for :CocInstall coc-elixir
-Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons' "requires hack nerdfont
-Plug 'rakr/vim-one' "one
+Plug 'rakr/vim-one'
 call plug#end()
 
 " theme
@@ -17,7 +16,7 @@ set background=dark
 colorscheme one
 let g:airline_theme='one'
 let g:airline_powerline_fonts = 1 "requires fonts-powerline
-call one#highlight('Normal', 'b7b7b7', '131926', 'none')
+" call one#highlight('Normal', 'b7b7b7', '131926', 'none')
 
 " settings
 set tabstop=2
