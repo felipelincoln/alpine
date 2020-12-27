@@ -6,7 +6,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "only for :CocInstall coc-elixir
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons' "requires hack nerdfont
+Plug 'ryanoasis/vim-devicons' "requires hack mono nerdfont
 Plug 'rakr/vim-one'
 call plug#end()
 
