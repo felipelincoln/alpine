@@ -1,12 +1,13 @@
 set encoding=UTF-8
 
-" plugins (requires elixir)
+" plugins (requires elixir and node)
+" after all requirements are met run :PlugInstall and then :CocInstall coc-elixir
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "only for :CocInstall coc-elixir
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons' "requires hack mono nerdfont
+Plug 'ryanoasis/vim-devicons' "requires hack nerdfont (bold, bolditalic, italic, regular) (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
 Plug 'rakr/vim-one'
 call plug#end()
 
@@ -15,7 +16,7 @@ set termguicolors
 set background=dark
 colorscheme one
 let g:airline_theme='one'
-let g:airline_powerline_fonts = 1 "requires fonts-powerline
+let g:airline_powerline_fonts = 1 "requires fonts-powerline (sudo apt install fonts-powerline)
 " call one#highlight('Normal', 'b7b7b7', '131926', 'none')
 
 " settings
